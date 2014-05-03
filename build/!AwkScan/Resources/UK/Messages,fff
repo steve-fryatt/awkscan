@@ -1,0 +1,51 @@
+# >Messages for AwkScan
+#
+# Front-end for AwkScan
+# (C) Stephen Fryatt, 2002
+#
+# UK Version
+
+TaskName:AwkScan
+Version:1.06 (14 Dec 2003)
+
+TaskSpr:!awkscan
+
+TaskWin:AwkScan
+
+# Messages & Errors
+
+PipeBroken:Pipe file could not be opened and so search was not started.
+
+# Interactive help information.
+
+HelpH1A:\TAwkScan application.|MClick \s or \a to search the Archive Magazine index (\s opens the \w with the last settings in place, \a opens a blank search \w).|MDrag a text file containing search parameters here to start a search.
+HelpH1B:\TAwkScan application.|MClick \s or \a to search the Archive Magazine index (\s opens a blank search \w, \a opens the \w with the last settings in place).|MDrag a text file containing search parameters here to start a search.
+HelpH2:This \w displays information about AwkScan.
+
+HelpSW0:\Scancel the search and close the \w.|M\Areset the \w.
+HelpSW1:\Sstart the search.\Astart the search and leave the \w open.
+HelpSW2:Enter some text to search the index for.|MUse * to match any zero or more characters, or # to match any single character.
+HelpSW3:\Tlogic used to connect the two search fields.|M\Spick a new connection.
+HelpSW4:\Tlogic used to connect the two search fields.
+HelpSW5:\Stoggle whether the case of text is taken into account when searching for matches.
+
+HelpCH0:\Sclose the \w and forget the changes.|M\Areset the \w.
+HelpCH1:\Sclose the \w and use the new options.|M\Ause the options.
+HelpCH2:\Sclose the \w, use the new options and save them as defaults.|M\Ause the options and save them.
+HelpCH3:\Tamount of memory allocated to the task \ws.|MEnter a new value as required.
+HelpCH4:\Stoggle whether simple wildcards or full regular expressions are used.
+HelpCH5:\Stoggle whether \s or \a in the icon bar icon opens a blank search \w.
+
+MenuIB0:\Rsee information about AwkScan.|M\Sread the online help.
+MenuIB1:\Rto add files to or re-scan the database.
+MenuIB2:\Schange the AwkScan options.
+MenuIB3:\Squit AwkScan.
+
+MenuDB0:\Sopen the folder containing the volume index files.
+MenuDB1:\Sre-scan the index files and recognise any new ones that have been added.
+
+MenuLG0:\Smatch items containing both search terms.
+MenuLG1:\Smatch items containing either search term.
+MenuLG2:Doesn't work!
+
+

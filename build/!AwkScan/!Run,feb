@@ -1,0 +1,44 @@
+| >!Run for AwkScan
+|
+| Front-end for AwkScan
+| (c) Stephen Fryatt, 2002
+|
+| 1.06 (14 Dec 2002)
+
+Set AwkScan$Dir <Obey$Dir>
+Set AwkScan$Path <AwkScan$Dir>.
+
+Set AwkScan$CodeDir <AwkScan$Dir>.AwkScan
+
+Set AwkScan$ParamFile Pipe:$.AwkScan
+
+| Ensure that CallASWI and the 32-bit SCL are loaded if necessary.
+
+RMEnsure UtilityModule 3.70 RMEnsure CallASWI 0.01 RMLoad System:Modules.CallASWI
+RMEnsure UtilityModule 3.70 RMEnsure CallASWI 0.01 Error AwkScan requires at least version 0.01 of CallASWI to be in your System folder.
+
+RMEnsure SharedCLibrary 5.17 RMLoad System:Modules.CLib
+RMEnsure SharedCLibrary 5.34 Error You need SharedCLibrary 5.34 or later to run AwkScan
+
+| These paths point to the magazine and disc data:
+| change the paths as appropriate.
+
+Set AwkScan$Mag <AwkScan$Dir>.^.Archive
+Set AwkScan$Discs <AwkScan$Dir>.^.ArDiscs
+
+If "<Wimp$ScrapDir>"="" Then Error AwkScan needs the Scrap directory to have been seen by the Filer.
+
+| Set up the paths and aliases.
+
+SetMacro Alias$AwkScan Do <AwkScan$CodeDir>.Mawk -f <AwkScan$CodeDir>.!RunImage %%0 <AwkScan$Mag> <AwkScan$Discs>
+
+Obey <AwkScan$CodeDir>.Init
+
+| Do the sprites.
+
+IconSprites AwkScan:!Sprites
+
+| Start the front-end.
+
+WimpSlot -min 64k -max 64k
+Run AwkScan:!RunImage

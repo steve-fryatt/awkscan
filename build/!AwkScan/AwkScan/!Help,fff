@@ -1,0 +1,140 @@
+!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!
+!                       AwkScan v.0.1               !
+!                                                   !
+!                        G.C.Wraith                 !
+!                          4/3/2                    !
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+AwkScan is an application for finding entries in the
+Archive database. It needs to be in a writeable
+filing system to function.
+
+The Archive database
+--------------------
+The archive database does not need to be in a writeable
+file system. It should contain files named "ARvolxx"
+and "Advolxx", where x's denote digits.
+The system variables "archive$mag" and "archive$discs"
+defined in
+
+      !AwkScan.!Boot
+
+define where the Archive database holds the ARvolxx and
+the Advolxx files, respectively.
+You can edit !AwkScan.!Boot to redefine these system variables.
+
+Running AwkScan
+---------------
+Doubleclick on !Awkscan to install it on the iconbar.
+Click Adjust on its iconbar icon to open the database
+directory. If you update the database by dragging in new
+files then you should click Select on the iconbar icon to warn
+AwkScan that the database has been updated.
+
+To search the database you must first create a "search file"
+describing what you are looking for. Then you drag the
+search file onto AwkScan's iconbar icon, and the results will
+be displayed in a taskwindow, which you can save if necessary.
+
+Search files
+------------
+Blank lines, are ignored by AwkScan. A line of the form
+
+# case
+
+will tell AwkScan to distinguish upper and lower case for
+the purposes of searching. The default is no case distinction.
+Any other line starting with # will be ignored. As for lines
+not starting with #, AwkScan will produce those records in the
+database that match at least one of them.
+So for example
+
+   # Any supermarkets mentioned?
+   Safeways
+   Tesco
+   Asda
+   Waitrose
+
+should be self-explanatory. This could also be written on one line
+as
+
+   Safeways|Tesco|Asda|Waitrose
+
+To search for a record mentioning both Safeways and Tesco, use
+
+   # Both mentioned
+   Safeways && Tesco
+
+In fact, the non-comment nonblank lines in a search file should be
+a sequence of standard regular expressions, separated by the
+conjunction symbol &&. Blank spaces to either side of &&s are
+discounted. To search for two consecutive ampersands use
+
+         (&)(&)
+
+to avoid confusion with &&.
+
+Regular Expressions
+-------------------
+The characters \ ^ $ . [ ] | ( ) * + ? are known as "metacharacters"
+because they play a special role in describing regular expressions.
+
+A basic regular expression is one of:
+
+> A non-metacharacter. This matches itself.
+
+> An escape sequence:
+                      \b    backspace
+                      \f    formfeed
+                      \n    newline
+                      \r    carriage return
+                      \t    tab
+                      \c    c any other, non-digit character - matches c
+                      \ddd  ddd octal value giving ASCII code
+
+  Escape sequences have to be used to denote metacharacters literally.
+
+> ^ matches beginning of a record.
+
+> $ matches end of a record.
+
+> . matches any single character.
+
+> A character class: [AZQ] matches A or Z or Q. [A-Z] matches
+  any upper case letter.
+
+> A complemented character class: [^0-9] represents any non-digit
+  character.
+
+Regular expressions can be combined:
+
+> A|B matches either A or B.
+
+> AB matches an A followed by a B.
+
+> A* matches zero or more A's.
+
+> A+ matches one or more A's.
+
+> A? the empty string or an A.
+
+> (A) matches the strings that match A.
+
+Since items in a record in the Archive database are separated by
+carriage returns
+
+     \r![LU]
+
+would produce all records having an item starting with !L or !U.
+To find a record with an item ending "ok?" use the pattern
+
+     ok\?\r
+
+To match all records for, say, Issue 11, use the pattern \r\\11.
+The pattern \r\\11[ ]40 will match those records occurring in Issue
+11 on page 40.
+
+Bugs
+---
+Please report bugs to gavin@wraith.u-net.com
+

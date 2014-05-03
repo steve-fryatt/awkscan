@@ -1,0 +1,42 @@
+/* Menu definitions for AwkScan
+ *
+ * Front-end for AwkScan
+ * (c) Stephen Fryatt, 2002
+ *
+ * 1.00 (8 April 2002)
+ */
+
+/* Icon bar menu. */
+
+menu (icon_bar_menu, "AwkScan")
+{
+  item ("Info...")
+  {
+    d_box (program_information_window);
+    dotted;
+  }
+  item ("Database")
+  {
+    submenu (icon_bar_database);
+  }
+  item ("Choices...")
+  {
+    dotted;
+  }
+  item ("Quit");
+}
+
+menu (icon_bar_database, "Database")
+{
+  item ("Open");
+  item ("Update");
+}
+
+/* Logic menu. */
+
+menu (logic_menu, "Logic")
+{
+  item ("And");
+  item ("Or");
+  /* item ("Not") */
+}

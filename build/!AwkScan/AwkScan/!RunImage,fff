@@ -1,0 +1,94 @@
+#! awk
+# awkscan v.0.1
+# G.C.Wraith 4/3/2
+
+BEGIN {         
+        sep = "." ; alpha = "[A-Za-z]+" ; join = "[ ]*&&[ ]*"
+        Mag = "Magazine"; Discs = "Discs"
+        magdir = ARGV[2] ; ARGV[2] = ""
+        discsdir = ARGV[3] ; ARGV[3] = ""
+        hr = "##########################################"
+        mb = "             Monthly Discs"
+       }
+       
+NF    { if ($1 == "#") 
+          case = ($2 == "case")
+        else pat[++patc] = $0 }
+
+END   {
+         list = "<awkscan$scrapdir>.mlist"
+         while (getline < list)
+            magf[++magc] = $0
+         close(list)
+
+         list = "<awkscan$scrapdir>.dlist"
+         while (getline < list) 
+            discsf[++discsc] = $0
+         close(list)
+         
+         RS = "\^" ; FS = "\r"
+         printf("  --- Searching %s ---\n\n",magdir)
+
+         for (i = 1; i <= magc; i++)
+            search(magdir sep,magf[i],Mag)
+
+         printf("\n  --- Searching %s ---\n\n",discsdir)
+
+         printf("%s\n%s\n%s\n\n",hr,mb,hr)
+         
+         for (i = 1; i <= discsc; i++)
+            search(discsdir sep,discsf[i],Discs)
+
+         print "  ----- finished -----"
+       }
+
+function search(path,fname,where  ,n,f) {
+       n = fname
+       sub(alpha,"",n)
+       f = path fname
+       while (getline < f)
+         if (ok($0,pat))
+           show(n,where)
+       close(f)                   }
+               
+
+function ok(s,p   ,i,c) {
+       if (case)
+          for (i in p)
+             c = c || conjoin(s,p[i])
+       else
+          for (i in p)
+             c = c || conjoin(tolower(s),tolower(p[i]))               
+       return c  }
+
+function conjoin(s,pats   ,a,i,x) {
+       split(pats,a,join)
+       x = 1
+       for (i in a)
+           x = x && match(s,a[i])
+       return x                 }    
+
+function show(vol,where, field) {
+        for (field = 1; field <= NF; field++)
+        {
+         if ($field != "" && $field != "[")
+         {
+          if (match($field,"^\\"))
+             volume(where,vol,$field)
+          else
+             print $field
+          }
+         }
+         print ""
+                               }
+
+function volume(where,vol,s   ,k,a) {
+        sub("\\","",s)
+        k = split(s,a," ")
+        printf("%s Volume %s",where,vol)
+        if (k > 0)
+          printf(" Issue %s",a[1])
+        if (k > 1)
+          printf(" Page %s",a[2])
+        printf("\n")          }
+            

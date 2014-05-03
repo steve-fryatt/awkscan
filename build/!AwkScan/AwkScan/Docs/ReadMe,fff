@@ -1,0 +1,15 @@
+
+AwkScan v.0.1 was contrapted by G.C.Wraith on 4/3/2
+at the request of Paul Beverley.
+It uses Michael Brennan's mawk 1.3.3, ported to
+Risc OS by G.C.Wraith on 24/1/0. Mawk is covered
+by conditions of the GNU Public Licence (see the
+file COPYING). Its Risc OS sources can be downloaded
+from http://awk.riscos.org.uk/.
+
+The AwkScan icon is supposed to depict an auk
+carring a magnifying glass under its left wing;
+sorry about that.
+
+G.C.Wraith
+

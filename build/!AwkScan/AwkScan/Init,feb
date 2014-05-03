@@ -1,0 +1,12 @@
+| >Init
+|
+| Set up the dlist and mlist files required by AwkScan.
+| The files are stored inside the Scrap directory: an AwkScan directory is
+| created here first if it does not already exist.
+
+Set AwkScan$ScrapDir <Wimp$ScrapDir>.AwkScan
+
+CDir <AwkScan$ScrapDir>
+
+EnumDir <AwkScan$Discs> <AwkScan$ScrapDir>.dlist Advol*
+EnumDir <AwkScan$Mag> <AwkScan$ScrapDir>.mlist ARvol*

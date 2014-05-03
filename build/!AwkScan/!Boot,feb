@@ -1,0 +1,12 @@
+| >!Boot for AwkScan
+|
+| Front-end for AwkScan
+| (c) Stephen Fryatt, 2002
+|
+| 1.06 (14 Dec 2003)
+
+Set AwkScan$Dir <Obey$Dir>
+
+IconSprites <AwkScan$Dir>.!Sprites
+
+Set UnixEnv$mawk$nonametrans ""
