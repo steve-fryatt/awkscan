@@ -81,11 +81,11 @@ Author G.C.Wraith, Front-end S.Fryatt$$date$$
 
 <chapter title="Installing AwkScan" file="Installation">
 
-<cite>AwkScan</cite> can be used on the <cite>Archive</cite> CD without any further installation. However, if your system uses RISC OS 3.6 or earlier, you may have to install the <cite>CallASWI</cite> module before searching will work. If you get an error asking for the module when <cite>AwkScan</cite> is run, you will need to <link ref="CallASWI">install CallASWI</link> as described below. It also requires the 32-bit Shared C Library to be present; this can be downloaded from <link ref="#url http://www.iyonix.com/32bit/system.shtml">http://www.iyonix.com/32bit/system.shtml</link> with full installation instructions.
+<cite>AwkScan</cite> can be used on the <cite>Archive</cite> CD without any further installation. However, if your system uses RISC&nbsp;OS&nbsp;3.6 or earlier, you may have to install the <cite>CallASWI</cite> module before searching will work. If you get an error asking for the module when <cite>AwkScan</cite> is run, you will need to <link ref="CallASWI">install CallASWI</link> as described below. It also requires the 32-bit Shared C&nbsp;Library to be present; this can be downloaded from <link ref="#url http://www.iyonix.com/32bit/system.shtml">http://www.iyonix.com/32bit/system.shtml</link> with full installation instructions.
 
-If you wish to copy <cite>AwkScan</cite> to your hard disc or have obtained your copy from somewhere else, you will also need the ArcScan index files.  Copy the <file>!AwkScan</file> application to a suitable location (you may want to create a new directory called something like <file>AwkScan</file> for it to live in).  From the <file>ArcScan</file> directory of the <cite>Archive</cite> CD, copy the <file>archive</file> and <file>ardiscs</file> directories with their contents into the new directory with <file>!AwkScan</file>.  The installation is now complete and you can start the <cite>AwkScan</cite> application.
+If you wish to copy <cite>AwkScan</cite> to your hard disc or have obtained your copy from somewhere else, you will also need the ArcScan index files. Copy the <file>!AwkScan</file> application to a suitable location (you may want to create a new directory called something like <file>AwkScan</file> for it to live in). From the <file>ArcScan</file> directory of the <cite>Archive</cite> CD, copy the <file>archive</file> and <file>ardiscs</file> directories with their contents into the new directory with <file>!AwkScan</file>. The installation is now complete and you can start the <cite>AwkScan</cite> application.
 
-It is also possible to make <cite>AwkScan</cite> read the indexes from another location (this is not necessary to run <cite>AwkScan</cite>).  To do this, <key>shift</key>-double-click on <file>!AwkScan</file> and load the <file>!Run</file> file into a text editor.  Find the lines that read
+It is also possible to make <cite>AwkScan</cite> read the indexes from another location (this is not necessary to run <cite>AwkScan</cite>). To do this, <key>shift</key>-double-click on <file>!AwkScan</file> and load the <file>!Run</file> file into a text editor. Find the lines that read
 
 <codeblock>
 | These paths point to the magazine and disc data:
@@ -97,7 +97,7 @@ Set AwkScan$Discs &lt;AwkScan$Dir&gt;.^.ArDiscs
 
 and change the paths to the location of the relevant directories.
 
-Note that, on old versions of RISC OS with 256 character restrictions on system variables, <cite>AwkScan</cite> can have problems running from a directory with a long pathname.  The only solution (apart from upgrading to RISC OS 4) is to move it higher up the directory tree.
+Note that, on old versions of RISC&nbsp;OS with 256 character restrictions on system variables, <cite>AwkScan</cite> can have problems running from a directory with a long pathname. The only solution (apart from upgrading to RISC&nbsp;OS&nbsp;4) is to move it higher up the directory tree.
 
 </chapter>
 
@@ -106,18 +106,18 @@ Note that, on old versions of RISC OS with 256 character restrictions on system 
 
 <chapter title="Installing CallASWI" file="CallASWI">
 
-On systems running RISC OS 3.6 and earlier, <cite>AwkScan</cite> needs the <cite>CallASWI</cite> module to be present before it can be run. This is likely to be present already, as a lot of StrongARM compatible applications require the module, but if running <cite>AwkScan</cite> produces an error asking for <cite>CallASWI</cite>, it will need to be installed.
+On systems running RISC&nbsp;OS&nbsp;3.6 and earlier, <cite>AwkScan</cite> needs the <cite>CallASWI</cite> module to be present before it can be run. This is likely to be present already, as a lot of StrongARM compatible applications require the module, but if running <cite>AwkScan</cite> produces an error asking for <cite>CallASWI</cite>, it will need to be installed.
 
 The module is supplied in the directory with <file>!AwkScan</file>, in the <file>CallASWI</file> directory. To install it, proceed as follows:
 
 <list type="num" spacing=1>
-<li>Find your System directory.  On systems with the new <cite>!Boot</cite> application in the root directory of the hard disc, <key>shift</key>-double-click on <file>!Boot</file> and open the <file>Resources</file> directory inside.  The  <file>!System</file> directory should be in here. On machines without the new <cite>!Boot</cite>, <file>!System</file> may be in the root directory of the hard disc.
+<li>Find your System directory. On systems with the new <cite>!Boot</cite> application in the root directory of the hard disc, <key>shift</key>-double-click on <file>!Boot</file> and open the <file>Resources</file> directory inside. The <file>!System</file> directory should be in here. On machines without the new <cite>!Boot</cite>, <file>!System</file> may be in the root directory of the hard disc.
 
-If you can not find it, press <key>f12</key> and enter <code>Filer_OpenDir &lt;System$Dir&gt;.^</code>.  Press <key>return</key> twice to get back to the Desktop, and a directory containing <file>!System</file> should be open.
+If you can not find it, press <key>f12</key> and enter <code>Filer_OpenDir &lt;System$Dir&gt;.^</code>. Press <key>return</key> twice to get back to the Desktop, and a directory containing <file>!System</file> should be open.
 
 <li>Open <file>!System</file> with a <key>shift</key>-double-click on it.
 
-<li>If <file>!System</file> contains a directory named <file>310</file>, open that and then open the directory inside it named <file>Modules</file>.  If there is no <file>310</file> directory, open the directory in <file>!System</file> called <file>Modules</file>.
+<li>If <file>!System</file> contains a directory named <file>310</file>, open that and then open the directory inside it named <file>Modules</file>. If there is no <file>310</file> directory, open the directory in <file>!System</file> called <file>Modules</file>.
 
 <li>Copy the <cite>CallASWI</cite> module into the <file>Modules</file> directory that has been opened.
 </list>
@@ -133,15 +133,15 @@ If you can not find it, press <key>f12</key> and enter <code>Filer_OpenDir &lt;S
 
 Double click on <cite>!AwkScan</cite> to install it on the iconbar.
 
-Click on the <cite>AwkScan</cite> icon bar icon to open the search window.  Enter a word or phrase to search for into the top field and click on <icon>Search</icon>.  The <cite>ArcScan</cite> indexes will be searched and a scrolling window will open showing any matches that are found.
+Click on the <cite>AwkScan</cite> icon bar icon to open the search window. Enter a word or phrase to search for into the top field and click on <icon>Search</icon>. The <cite>ArcScan</cite> indexes will be searched and a scrolling window will open showing any matches that are found.
 
-A second word or phrase can be entered into the lower field.  Between the two is a pop-up menu which controls how the two pieces of text are used.  <menu>And</menu> requires <em>both</em> words or phrases to be found, <menu>Or</menu> is satisfied if <em>either</em> is found.
+A second word or phrase can be entered into the lower field. Between the two is a pop-up menu which controls how the two pieces of text are used. <menu>And</menu> requires <em>both</em> words or phrases to be found, <menu>Or</menu> is satisfied if <em>either</em> is found.
 
-The standard <code>*</code> and <code>#</code> wildcards can be used to stand for any zero or more characters and <em>one</em> character respectively.  For example, <code>Arch#ve</code> would match <code>Archive</code> or <code>Archave</code> but not <code>Archve</code> or <code>Architrave</code>.  However, <code>Arch*ve</code> would match all of the examples given, but not <code>Archived</code>. The use of wildcards can be affected by the settings in the <link ref="Choices">choices window</link>.
+The standard <code>*</code> and <code>#</code> wildcards can be used to stand for any zero or more characters and <em>one</em> character respectively. For example, <code>Arch#ve</code> would match <code>Archive</code> or <code>Archave</code> but not <code>Archve</code> or <code>Architrave</code>. However, <code>Arch*ve</code> would match all of the examples given, but not <code>Archived</code>. The use of wildcards can be affected by the settings in the <link ref="Choices">choices window</link>.
 
 The <icon>Case sensitive</icon> switch tells <cite>AwkScan</cite> whether or not to take the case of letters into account when matching the pieces of text.
 
-The search window can be opened by clicking either <mouse>select</mouse> or <mouse>adjust</mouse> on the icon bar icon.  By default, unless it is changed in the <link ref="Choices">choices window</link>, opening the window with <mouse>select</mouse> will leave the previous search set up while using <mouse>adjust</mouse> will cause all the fields to be cleared.
+The search window can be opened by clicking either <mouse>select</mouse> or <mouse>adjust</mouse> on the icon bar icon. By default, unless it is changed in the <link ref="Choices">choices window</link>, opening the window with <mouse>select</mouse> will leave the previous search set up while using <mouse>adjust</mouse> will cause all the fields to be cleared.
 
 </chapter>
 
@@ -152,11 +152,11 @@ The search window can be opened by clicking either <mouse>select</mouse> or <mou
 
 Selecting <menu>Choices...</menu> from the icon bar menu allows the way that <cite>AwkScan</cite> works to be changed.
 
-<icon>Simple wildcards</icon> controls the use of the <code>*</code> and <code>#</code> wildcards as described above.  If it is on, these work as described; if not, the wild cards are replaced by the more powerful (and complex) <link ref="RegExps">regular expressions</link> as described below.
+<icon>Simple wildcards</icon> controls the use of the <code>*</code> and <code>#</code> wildcards as described above. If it is on, these work as described; if not, the wild cards are replaced by the more powerful (and complex) <link ref="RegExps">regular expressions</link> as described below.
 
-<icon>Select opens blank search</icon> determines the way in which <mouse>select</mouse> or <mouse>adjust</mouse> work on the icon bar icon.  Toggling this option on and off reverses the actions of the two mouse buttons.
+<icon>Select opens blank search</icon> determines the way in which <mouse>select</mouse> or <mouse>adjust</mouse> work on the icon bar icon. Toggling this option on and off reverses the actions of the two mouse buttons.
 
-The <icon>Child task memory</icon> setting controls how much memory is used for searching the index.  The 640Kb default should not need changing, although it can be increased if necessary.
+The <icon>Child task memory</icon> setting controls how much memory is used for searching the index. The 640Kb default should not need changing, although it can be increased if necessary.
 
 </chapter>
 
@@ -165,7 +165,7 @@ The <icon>Child task memory</icon> setting controls how much memory is used for 
 
 <chapter title="The Database" file="Database">
 
-The <cite>ArcScan</cite> indexes used by <cite>AwkScan</cite> can be accessed from the <menu>Database</menu> submenu of the icon bar menu.  To open the directories containing the indexes that <cite>AwkScan</cite> is using, choose <menu>Database-&gt;Open</menu>.  If you update the indexes by dragging in new files (from the Archive CD, say), you should then choose <menu>Database-&gt;Update</menu> to warn <cite>AwkScan</cite> that the database has been updated.
+The <cite>ArcScan</cite> indexes used by <cite>AwkScan</cite> can be accessed from the <menu>Database</menu> submenu of the icon bar menu. To open the directories containing the indexes that <cite>AwkScan</cite> is using, choose <menu>Database &msep; Open</menu>. If you update the indexes by dragging in new files (from the Archive CD, say), you should then choose <menu>Database &msep; Update</menu> to warn <cite>AwkScan</cite> that the database has been updated.
 
 </chapter>
 
@@ -173,7 +173,7 @@ The <cite>ArcScan</cite> indexes used by <cite>AwkScan</cite> can be accessed fr
 
 <chapter title="Search files" file="Files">
 
-The database can also be searched using "search files".  These are text files that are dragged to the <cite>AwkScan</cite> icon.  The files describe what you are looking for and the results are displayed in a window as before. Search files are an <em>alternative</em> to the <link ref="Using">search window</link>: using them is not a requirement!  In fact, <cite>AwkScan</cite> will generate a search file for itself to use each time you start a search from the <window>search window</window>, although the user will never normally see this.
+The database can also be searched using &lsquo;search files&rsquo;. These are text files that are dragged to the <cite>AwkScan</cite> icon. The files describe what you are looking for and the results are displayed in a window as before. Search files are an <em>alternative</em> to the <link ref="Using">search window</link>: using them is not a requirement! In fact, <cite>AwkScan</cite> will generate a search file for itself to use each time you start a search from the <window>search window</window>, although the user will never normally see this.
 
 Blank lines in search files are ignored by <cite>AwkScan</cite>. A line of the form
 
@@ -204,7 +204,7 @@ To search for a record mentioning both Safeways and Tesco, use
 Safeways &amp;&amp; Tesco
 </codeblock>
 
-In fact, the non-comment nonblank lines in a search file should be a sequence of standard <link ref="RegExps">regular expressions</link>, separated by the conjunction symbol <code>&amp;&amp;</code>.  Blank spaces to either side of <code>&amp;&amp;</code>s are discounted. To search for two consecutive ampersands use
+In fact, the non-comment nonblank lines in a search file should be a sequence of standard <link ref="RegExps">regular expressions</link>, separated by the conjunction symbol <code>&amp;&amp;</code>. Blank spaces to either side of <code>&amp;&amp;</code>s are discounted. To search for two consecutive ampersands use
 
 <codeblock>
 (&amp;)(&amp;)
@@ -231,13 +231,13 @@ This matches itself.
 An escape sequence is any one of the following series of characters:
 
 <list>
-<li><code>\b</code> - backspace
-<li><code>\f</code> - formfeed
-<li><code>\n</code> - newline
-<li><code>\r</code> - carriage return
-<li><code>\t</code> - tab
-<li><code>\c</code> - <code>c</code> any other, non-digit character - matches <code>c</code>.
-<li><code>\ddd</code> - <code>ddd</code> octal value giving ASCII code
+<li><code>\b</code> &ndash; backspace
+<li><code>\f</code> &ndash; formfeed
+<li><code>\n</code> &ndash; newline
+<li><code>\r</code> &ndash; carriage return
+<li><code>\t</code> &ndash; tab
+<li><code>\c</code> &ndash; <code>c</code> any other, non-digit character &ndash; matches <code>c</code>.
+<li><code>\ddd</code> &ndash; <code>ddd</code> octal value giving ASCII code
 </list>
 
 Escape sequences have to be used to denote metacharacters literally.
@@ -259,7 +259,7 @@ Escape sequences have to be used to denote metacharacters literally.
 <code>[AZQ]</code> matches <code>A</code> or <code>Z</code> or <code>Q</code>. <code>[A-Z]</code> matches any upper case letter. <code>[^0-9]</code> represents any non-digit character.
 </definition>
 
-Regular expressions can be combined.  For example:
+Regular expressions can be combined. For example:
 
 <list>
 <li><code>A|B</code> matches either <code>A</code> or <code>B</code>.
@@ -282,7 +282,7 @@ would produce all records having an item starting with <code>!L</code> or <code>
 ok\?\r
 </codeblock>
 
-To match all records for, say, Issue 11, use the pattern <code>\r\\11.</code> The pattern <code>\r\\11[ ]40</code> will match those records occurring in Issue 11 on page 40.
+To match all records for, say, Issue&nbsp;11, use the pattern <code>\r\\11.</code> The pattern <code>\r\\11[ ]40</code> will match those records occurring in Issue&nbsp;11 on page&nbsp;40.
 
 </chapter>
 
@@ -301,13 +301,13 @@ To match all records for, say, Issue 11, use the pattern <code>\r\\11.</code> Th
 
 <list>
 <li>Corrected setting of <code>&lt;AwkScan$ParamFile&gt;</code> so that search files are no longer created in the same directory as <cite>!AwkScan</cite>.
-<li>Added support for <cite>CallASWI</cite> module in <file>!Run</file> file, so <cite>AwkScan</cite> will work correctly on all pre-RISC OS 3.7 systems.
+<li>Added support for <cite>CallASWI</cite> module in <file>!Run</file> file, so <cite>AwkScan</cite> will work correctly on all pre-RISC&nbsp;OS&nbsp;3.7 systems.
 </list>
 
 <subhead title="1.02 (24 September 2002)">
 
 <list>
-<li>Release for Volume 15 CD
+<li>Release for Volume&nbsp;15&nbsp;CD
 </list>
 
 <subhead title="1.05 (8 February 2003)">
@@ -321,6 +321,12 @@ To match all records for, say, Issue 11, use the pattern <code>\r\\11.</code> Th
 
 <list>
 <li>Uses the 26/32-bit <cite>Mawk</cite> binary to resolve problem with missing volume numbers in reports.
+</list>
+
+<subhead title="Test Build">
+
+<list>
+<li>Converted front-end into Tokenize format and updated build system.
 </list>
 
 </chapter>
@@ -337,6 +343,77 @@ Contacts
   routines) or steve@stevefryatt.org.uk (for bugs in the desktop
   front-end).
 </literal>
+
+
+
+
+<literal mode="Strong" file="!Configure">
+# Configure file for StrongHelp
+# Lines starting with "# " are comments (Note the space)
+# Lines starting with "#Commands" and "#End" are *not* comments.
+
+#Commands
+
+# f0  = Sassoon.Primary           14   Bold  1  Italic  2  Both  3
+# f1  = Sassoon.Primary.Bold      14   Bold  1  Italic  2  Both  3
+# f2  = Homerton.Medium.Oblique   14   Bold  1  Italic  2  Both  3
+# f3  = Homerton.Bold.Oblique     14   Bold  1  Italic  2  Both  3
+
+# The Body font
+
+f0  = Trinity.Medium          14   Bold  1  Italic  2  Both  3
+f1  = Trinity.Bold            14   Bold  1  Italic  2  Both  3
+f2  = Trinity.Medium.Italic   14   Bold  1  Italic  2  Both  3
+f3  = Trinity.Bold.Italic     14   Bold  1  Italic  2  Both  3
+f4  = Trinity.Medium          10
+
+# The Headline fonts
+
+f10 = Homerton.Bold           16
+f11 = Homerton.Bold.Oblique   14
+f12 = Trinity.Bold            14
+f13 = Trinity.Bold.Italic     12
+f14 = Trinity.Medium          10
+f15 = Trinity.Medium.Italic   8
+
+# The fonts used for fCode
+
+f20 = Corpus.Medium           14   Bold 21  Italic 22  Both 23
+f21 = Corpus.Bold             14   Bold 21  Italic 22  Both 23
+f22 = Corpus.Medium.Oblique   14   Bold 21  Italic 22  Both 23
+f23 = Corpus.Bold.Oblique     14   Bold 21  Italic 22  Both 23
+
+# Fonts 24 to 31 are reserved for the manuals themselves.
+
+f31 = Selwyn                  14
+
+# The styles..
+
+fStd       = f0
+fLink      = f_
+fStrong    = f*
+fEmphasis  = f/
+fUnderline = f_
+fCode      = f20
+fCite      = f/
+
+fH1        = f10
+fH2        = f11
+fH3        = f12
+fH4        = f13
+fH5        = f14
+fH6        = f15
+
+# Set default background and font
+
+#Background rgb 255,255,255
+Background wimp 1
+fStd
+
+#End
+</literal>
+
+
 
 
 

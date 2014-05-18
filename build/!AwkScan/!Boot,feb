@@ -1,9 +1,26 @@
-| >!Boot for AwkScan
+| >!Boot
 |
-| Front-end for AwkScan
-| (c) Stephen Fryatt, 2002
+| Copyright 2002-2014, Stephen Fryatt (info@stevefryatt.org.uk)
 |
-| 1.06 (14 Dec 2003)
+| This file is part of AwkScan:
+|
+|   http://www.stevefryatt.org.uk/software/
+|
+| Licensed under the EUPL, Version 1.1 only (the "Licence");
+| You may not use this work except in compliance with the
+| Licence.
+|
+| You may obtain a copy of the Licence at:
+|
+|   http://joinup.ec.europa.eu/software/page/eupl
+|
+| Unless required by applicable law or agreed to in
+| writing, software distributed under the Licence is
+| distributed on an "AS IS" basis, WITHOUT WARRANTIES
+| OR CONDITIONS OF ANY KIND, either express or implied.
+|
+| See the Licence for the specific language governing
+| permissions and limitations under the Licence.
 
 Set AwkScan$Dir <Obey$Dir>
 
