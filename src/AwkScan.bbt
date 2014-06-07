@@ -78,7 +78,7 @@ CASE b%!12 OF
  WHEN -2
   CASE b%!8 OF
    WHEN 4 : PROCopen_search_window(FNread_opt_config("Select opens blank"),!b%,b%!4)
-   WHEN 2 : PROCdisplay_bar_menu(icon_bar_menu%,4,2,!b%)
+   WHEN 2 : PROCdisplay_bar_menu(icon_bar_menu%,5,2,!b%)
    WHEN 1 : PROCopen_search_window(NOT FNread_opt_config("Select opens blank"),!b%,b%!4)
   ENDCASE
  WHEN search_window%
@@ -127,14 +127,14 @@ re_open%=(q%!8=1)
 CASE menu_up% OF
  WHEN icon_bar_menu%
   CASE !b% OF
-   WHEN 0 : OSCLI("%Filer_Run <AwkScan$Dir>.!Help")
-   WHEN 1
+   WHEN 1 : OSCLI("%Filer_Run <AwkScan$Dir>.!Help")
+   WHEN 2
     CASE b%!4 OF
      WHEN 0 : OSCLI("%Filer_OpenDir <AwkScan$Discs>") : OSCLI("%Filer_OpenDir <AwkScan$Mag>")
      WHEN 1 : OSCLI("%Filer_Run <AwkScan$CodeDir>.Init")
     ENDCASE
-   WHEN 2 : PROCopen_options_window(!q%,q%!4,TRUE)
-   WHEN 3 : quit%=TRUE
+   WHEN 3 : PROCopen_options_window(!q%,q%!4,TRUE)
+   WHEN 4 : quit%=TRUE
   ENDCASE
  WHEN logic_menu%
   search_logic%=!b%

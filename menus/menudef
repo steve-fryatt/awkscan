@@ -24,8 +24,10 @@
 /* Iconbar Menu. */
 
 menu(icon_bar_menu, "AwkScan") {
-	item("Info...") {
+	item("Info") {
 		d_box(program_information_window);
+	}
+	item("Help") {
 		dotted;
 	}
 	item("Database") {

@@ -52,10 +52,11 @@ HelpCH3:\Tamount of memory allocated to the task \ws.|MEnter a new value as requ
 HelpCH4:\Stoggle whether simple wildcards or full regular expressions are used.
 HelpCH5:\Stoggle whether \s or \a in the icon bar icon opens a blank search \w.
 
-MenuIB0:\Rsee information about AwkScan.|M\Sread the online help.
-MenuIB1:\Rto add files to or re-scan the database.
-MenuIB2:\Schange the AwkScan options.
-MenuIB3:\Squit AwkScan.
+MenuIB0:\Rsee information about AwkScan.
+MenuIB1:\Sread AwkScan's online help.
+MenuIB2:\Rto add files to or re-scan the database.
+MenuIB3:\Schange the AwkScan options.
+MenuIB4:\Squit AwkScan.
 
 MenuDB0:\Sopen the folder containing the volume index files.
 MenuDB1:\Sre-scan the index files and recognise any new ones that have been added.
