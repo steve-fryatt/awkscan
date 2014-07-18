@@ -83,15 +83,15 @@ CASE b%!12 OF
   ENDCASE
  WHEN search_window%
   CASE b%!16 OF
-   WHEN 0 : IF b%!8=4 THEN PROCclose_window(search_window%)
-   WHEN 1 : PROCsearch_with_parameters : IF b%!8=4 THEN PROCclose_window(search_window%)
+   WHEN 0 : IF b%!8=4 THEN PROCwindow_close(search_window%)
+   WHEN 1 : PROCsearch_with_parameters : IF b%!8=4 THEN PROCwindow_close(search_window%)
    WHEN 3 : PROCdisplay_icon_menu(logic_menu%,search_window%,3)
   ENDCASE
  WHEN options_window%
   CASE b%!16 OF
-   WHEN 0 : IF b%!8=4 THEN PROCclose_window(options_window%) ELSE PROCopen_options_window(0,0,FALSE)
-   WHEN 1 : PROCset_options : IF b%!8=4 THEN PROCclose_window(options_window%)
-   WHEN 2 : PROCset_options : PROCsave_options : IF b%!8=4 THEN PROCclose_window(options_window%)
+   WHEN 0 : IF b%!8=4 THEN PROCwindow_close(options_window%) ELSE PROCopen_options_window(0,0,FALSE)
+   WHEN 1 : PROCset_options : IF b%!8=4 THEN PROCwindow_close(options_window%)
+   WHEN 2 : PROCset_options : PROCsave_options : IF b%!8=4 THEN PROCwindow_close(options_window%)
   ENDCASE
 ENDCASE
 ENDPROC
@@ -103,13 +103,13 @@ DEF PROChandle_keypress_event
 CASE !b% OF
  WHEN search_window%
   CASE b%!24 OF
-   WHEN 13 : PROCsearch_with_parameters : PROCclose_window(search_window%)
-   WHEN 27 : PROCclose_window(search_window%)
+   WHEN 13 : PROCsearch_with_parameters : PROCwindow_close(search_window%)
+   WHEN 27 : PROCwindow_close(search_window%)
   ENDCASE
  WHEN options_window%
   CASE b%!24 OF
-   WHEN 13 : PROCset_options : PROCclose_window(options_window%)
-   WHEN 27 : PROCclose_window(options_window%)
+   WHEN 13 : PROCset_options : PROCwindow_close(options_window%)
+   WHEN 27 : PROCwindow_close(options_window%)
   ENDCASE
 ENDCASE
 ENDPROC
@@ -176,7 +176,7 @@ IF NOT FNwindow_is_open(search_window%) THEN
   $FNicon_indirection(search_window%,5)=last_search$(1)
  ENDIF
  $FNicon_indirection(search_window%,4)=FNget_standard_menu_text(logic_menu%,search_logic%)
- PROCopen_window_centred(search_window%,x%,y%)
+ PROCwindow_open_centred_at(search_window%,x%,y%)
  PROCput_caret_at_end(search_window%,2)
 ENDIF
 ENDPROC
@@ -317,7 +317,7 @@ PROCset_icon_state(options_window%,7,FNread_opt_config("Select opens blank"),FAL
 $FNicon_indirection(options_window%,4)=STR$(FNread_int_config("Task slot size"))
 :
 IF open% THEN
- PROCopen_window_centred(options_window%,x%,y%)
+ PROCwindow_open_centred_at(options_window%,x%,y%)
  PROCput_caret_at_end(options_window%,4)
 ELSE
  PROCforce_icon_redraw(options_window%,4)
