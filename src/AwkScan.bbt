@@ -25,9 +25,10 @@ REM permissions and limitations under the Licence.
 ON ERROR VDU 4 : PRINT "Error in AwkScan: ";REPORT$;" at line ";ERL : END
 :
 LIBRARY "BASIC:WimpLib"
-LIBRARY "BASIC:Window"
 LIBRARY "BASIC:Config"
+LIBRARY "BASIC:Resources"
 LIBRARY "BASIC:WimpError"
+LIBRARY "BASIC:Window"
 :
 REM These values get replaced by tokenize.
 :
@@ -419,7 +420,7 @@ REM Initialisation
 DEF PROCinitialise
 DIM a% 256, b% 4095, q% 256
 :
-resource_path$=FNterritory_resources("<AwkScan$Dir>.Resources")
+resource_path$=FNresources_find_territory_folder("<AwkScan$Dir>.Resources")
 :
 DIM message_block% 16
 SYS "MessageTrans_FileInfo",,resource_path$+"Messages" TO flags%,,message_size%
