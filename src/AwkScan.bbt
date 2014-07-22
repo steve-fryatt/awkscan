@@ -78,9 +78,9 @@ DEF PROChandle_mouse_click_event
 CASE b%!12 OF
  WHEN -2
   CASE b%!8 OF
-   WHEN 4 : PROCopen_search_window(FNread_opt_config("Select opens blank"),!b%,b%!4)
+   WHEN 4 : PROCopen_search_window(PROCconfig_read_boolean("Select opens blank"),!b%,b%!4)
    WHEN 2 : PROCdisplay_bar_menu(icon_bar_menu%,5,2,!b%)
-   WHEN 1 : PROCopen_search_window(NOT FNread_opt_config("Select opens blank"),!b%,b%!4)
+   WHEN 1 : PROCopen_search_window(NOT PROCconfig_read_boolean("Select opens blank"),!b%,b%!4)
   ENDCASE
  WHEN search_window%
   CASE b%!16 OF
@@ -253,7 +253,7 @@ DEF PROCwrite_escaped_string_to_file(file%,string$)
 :
 LOCAL loop%,char%,wildcards%
 :
-wildcards%=FNread_opt_config("Simple wildcards")
+wildcards%=PROCconfig_read_boolean("Simple wildcards")
 :
 FOR loop%=1 TO LEN(string$)
  char%=ASC(MID$(string$,loop%,1))
@@ -291,7 +291,7 @@ DEF PROCcall_awkscan(file$)
 LOCAL command_string$,twindow_string$,options$
 :
 command_string$="awkscan "+file$
-twindow_string$="-wimpslot "+STR$(FNread_int_config("Task slot size"))+"k -name """+FNmessage_trans("TaskWin")+""" -display -quit"
+twindow_string$="-wimpslot "+STR$(PROCconfig_read_integer("Task slot size"))+"k -name """+FNmessage_trans("TaskWin")+""" -display -quit"
 :
 SYS "Wimp_StartTask","TaskWindow """+command_string$+""" "+twindow_string$
 ENDPROC
@@ -313,9 +313,9 @@ REM Choices handling
 :
 :
 DEF PROCopen_options_window(x%,y%,open%)
-PROCset_icon_state(options_window%,6,FNread_opt_config("Simple wildcards"),FALSE,FALSE)
-PROCset_icon_state(options_window%,7,FNread_opt_config("Select opens blank"),FALSE,FALSE)
-$FNicon_indirection(options_window%,4)=STR$(FNread_int_config("Task slot size"))
+PROCset_icon_state(options_window%,6,PROCconfig_read_boolean("Simple wildcards"),FALSE,FALSE)
+PROCset_icon_state(options_window%,7,PROCconfig_read_boolean("Select opens blank"),FALSE,FALSE)
+$FNicon_indirection(options_window%,4)=STR$(PROCconfig_read_integer("Task slot size"))
 :
 IF open% THEN
  PROCwindow_open_centred_at(options_window%,x%,y%)
@@ -331,9 +331,9 @@ ENDPROC
 :
 :
 DEF PROCset_options
-PROCset_opt_config("Simple wildcards",FNicon_selected(options_window%,6))
-PROCset_opt_config("Select opens blank",FNicon_selected(options_window%,7))
-PROCset_int_config("Task slot size", VAL($FNicon_indirection(options_window%,4)))
+PROCconfig_set_boolean("Simple wildcards",FNicon_selected(options_window%,6))
+PROCconfig_set_boolean("Select opens blank",FNicon_selected(options_window%,7))
+PROCconfig_set_integer("Task slot size", VAL($FNicon_indirection(options_window%,4)))
 ENDPROC
 :
 :
@@ -354,7 +354,7 @@ IF choices_save$="" THEN
  ENDIF
 ENDIF
 :
-PROCsave_config_file(choices_save$)
+PROCconfig_save_file(choices_save$)
 ENDPROC
 :
 :
@@ -375,7 +375,7 @@ REM Try and find an appropriate token for the window and icon currently under th
 token$=""
 :
 CASE b%!32 OF
- WHEN -2 : IF FNread_opt_config("Select opens blank") token$="HelpH1B" ELSE token$="HelpH1A"
+ WHEN -2 : IF PROCconfig_read_boolean("Select opens blank") token$="HelpH1B" ELSE token$="HelpH1A"
  WHEN program_info_window% : token$="HelpH2"
  WHEN search_window% : CASE b%!36 OF
    WHEN 0,1,2,3,4 : token$="HelpSW"+STR$(b%!36)
@@ -459,15 +459,15 @@ PROCload_menu_block(resource_path$+"Menus",q%)
 icon_bar_menu%=!q%
 logic_menu%=q%!8
 :
-PROCinitialise_config(10,task_name$)
-PROCinit_int_config("Task slot size",640)
-PROCinit_opt_config("Select opens blank",FALSE)
-PROCinit_opt_config("Simple wildcards",TRUE)
+PROCconfig_initialise(10,task_name$)
+PROCconfig_init_integer("Task slot size",640)
+PROCconfig_init_boolean("Select opens blank",FALSE)
+PROCconfig_init_boolean("Simple wildcards",TRUE)
 :
 choices_load$="Choices:AwkScan.Choices"
 SYS "XOS_File",17,choices_load$ TO choices_type% ;flags%
 IF (flags% AND 1)<>0 OR choices_type%<>1 THEN choices_load$="AwkScan:Choices"
-choices_save$=FNload_config_file(choices_load$)
+choices_save$=FNconfig_load_file(choices_load$)
 :
 DIM last_search$(1)
 search_logic%=0
