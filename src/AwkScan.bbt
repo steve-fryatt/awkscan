@@ -26,6 +26,7 @@ ON ERROR VDU 4 : PRINT "Error in AwkScan: ";REPORT$;" at line ";ERL : END
 :
 LIBRARY "BASIC:WimpLib"
 LIBRARY "BASIC:Config"
+LIBRARY "BASIC:Icon"
 LIBRARY "BASIC:Resources"
 LIBRARY "BASIC:WimpError"
 LIBRARY "BASIC:Window"
@@ -140,7 +141,7 @@ CASE menu_up% OF
  WHEN logic_menu%
   search_logic%=!b%
   $FNicon_indirection(search_window%,4)=FNget_standard_menu_text(logic_menu%,search_logic%)
-  PROCforce_icon_redraw(search_window%,4)
+  PROCicon_redraw(search_window%,4)
 ENDCASE
 :
 IF re_open% THEN PROCdisplay_menu(menu_up%,0,0)
@@ -321,7 +322,7 @@ IF open% THEN
  PROCwindow_open_centred_at(options_window%,x%,y%)
  PROCput_caret_at_end(options_window%,4)
 ELSE
- PROCforce_icon_redraw(options_window%,4)
+ PROCicon_redraw(options_window%,4)
  IF FNis_caret_in_icon(options_window%,4) THEN PROCput_caret_at_end(options_window%,4)
 ENDIF
 
