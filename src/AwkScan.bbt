@@ -191,7 +191,7 @@ DEF PROCsearch_with_file
 LOCAL file_name$
 :
 IF b%!40=&FFF THEN
- file_name$=FNzero_string(b%+44)
+ SYS "XOS_GenerateError", b% + 44 TO file_name$
  :
  PROCcall_awkscan(file_name$)
  :
