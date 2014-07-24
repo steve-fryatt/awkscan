@@ -314,8 +314,8 @@ REM Choices handling
 :
 :
 DEF PROCopen_options_window(x%,y%,open%)
-PROCset_icon_state(options_window%,6,PROCconfig_read_boolean("Simple wildcards"),FALSE,FALSE)
-PROCset_icon_state(options_window%,7,PROCconfig_read_boolean("Select opens blank"),FALSE,FALSE)
+PROCicon_set_selected(options_window%,6,PROCconfig_read_boolean("Simple wildcards"))
+PROCicon_set_selected(options_window%,7,PROCconfig_read_boolean("Select opens blank"))
 $FNicon_indirection(options_window%,4)=STR$(PROCconfig_read_integer("Task slot size"))
 :
 IF open% THEN
@@ -473,7 +473,7 @@ choices_save$=FNconfig_load_file(choices_load$)
 DIM last_search$(1)
 search_logic%=0
 :
-icon_bar%=FNcreate_standard_bar_icon(-1,task_spr$)
+icon_bar%=FNicon_create_standard_bar(-1,task_spr$)
 ENDPROC
 :
 :
