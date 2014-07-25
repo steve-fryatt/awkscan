@@ -28,6 +28,7 @@ LIBRARY "BASIC:WimpLib"
 LIBRARY "BASIC:Config"
 LIBRARY "BASIC:Icon"
 LIBRARY "BASIC:Resources"
+LIBRARY "BASIC:Template"
 LIBRARY "BASIC:WimpError"
 LIBRARY "BASIC:Window"
 :
@@ -179,7 +180,7 @@ IF NOT FNwindow_is_open(search_window%) THEN
  ENDIF
  $FNicon_indirection(search_window%,4)=FNget_standard_menu_text(logic_menu%,search_logic%)
  PROCwindow_open_centred_at(search_window%,x%,y%)
- PROCput_caret_at_end(search_window%,2)
+ PROCicon_put_caret_at_end(search_window%,2)
 ENDIF
 ENDPROC
 :
@@ -320,10 +321,10 @@ $FNicon_indirection(options_window%,4)=STR$(PROCconfig_read_integer("Task slot s
 :
 IF open% THEN
  PROCwindow_open_centred_at(options_window%,x%,y%)
- PROCput_caret_at_end(options_window%,4)
+ PROCicon_put_caret_at_end(options_window%,4)
 ELSE
  PROCicon_redraw(options_window%,4)
- IF FNis_caret_in_icon(options_window%,4) THEN PROCput_caret_at_end(options_window%,4)
+ IF FNicon_test_for_caret(options_window%,4) THEN PROCicon_put_caret_at_end(options_window%,4)
 ENDIF
 
 ENDPROC
@@ -443,14 +444,14 @@ quit%=FALSE
 indirected_data_size%=1024
 DIM indirected_data% indirected_data_size%
 :
-PROCopen_templates(resource_path$+"Templates")
-PROCload_template("Info",b%,indirected_data%,indirected_data_size%,-1)
+PROCtemplate_open(resource_path$+"Templates")
+PROCtemplate_load("Info",b%,indirected_data%,indirected_data_size%,-1)
 SYS "Wimp_CreateWindow",,b% TO program_info_window%
-PROCload_template("Search",b%,indirected_data%,indirected_data_size%,-1)
+PROCtemplate_load("Search",b%,indirected_data%,indirected_data_size%,-1)
 SYS "Wimp_CreateWindow",,b% TO search_window%
-PROCload_template("Options",b%,indirected_data%,indirected_data_size%,-1)
+PROCtemplate_load("Options",b%,indirected_data%,indirected_data_size%,-1)
 SYS "Wimp_CreateWindow",,b% TO options_window%
-PROCclose_templates
+PROCtemplate_close
 :
 $FNicon_indirection(program_info_window%,8)=CHR$(169) + " Stephen Fryatt, 2002-" + MID$(build_date$, 8)
 $FNicon_indirection(program_info_window%,3)=build_version$+" ("+build_date$+")"
