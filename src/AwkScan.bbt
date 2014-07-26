@@ -27,6 +27,7 @@ ON ERROR VDU 4 : PRINT "Error in AwkScan: ";REPORT$;" at line ";ERL : END
 LIBRARY "BASIC:WimpLib"
 LIBRARY "BASIC:Config"
 LIBRARY "BASIC:Icon"
+LIBRARY "BASIC:Menu"
 LIBRARY "BASIC:Resources"
 LIBRARY "BASIC:Template"
 LIBRARY "BASIC:WimpError"
@@ -81,14 +82,14 @@ CASE b%!12 OF
  WHEN -2
   CASE b%!8 OF
    WHEN 4 : PROCopen_search_window(PROCconfig_read_boolean("Select opens blank"),!b%,b%!4)
-   WHEN 2 : PROCdisplay_bar_menu(icon_bar_menu%,5,2,!b%)
+   WHEN 2 : PROCmenu_create_iconbar(icon_bar_menu%, !b%)
    WHEN 1 : PROCopen_search_window(NOT PROCconfig_read_boolean("Select opens blank"),!b%,b%!4)
   ENDCASE
  WHEN search_window%
   CASE b%!16 OF
    WHEN 0 : IF b%!8=4 THEN PROCwindow_close(search_window%)
    WHEN 1 : PROCsearch_with_parameters : IF b%!8=4 THEN PROCwindow_close(search_window%)
-   WHEN 3 : PROCdisplay_icon_menu(logic_menu%,search_window%,3)
+   WHEN 3 : PROCmenu_create_popup(logic_menu%,search_window%,3)
   ENDCASE
  WHEN options_window%
   CASE b%!16 OF
@@ -127,7 +128,7 @@ LOCAL re_open%
 SYS "Wimp_GetPointerInfo",,q%
 re_open%=(q%!8=1)
 :
-CASE menu_up% OF
+CASE FNmenu_current_handle OF
  WHEN icon_bar_menu%
   CASE !b% OF
    WHEN 1 : OSCLI("%Filer_Run <AwkScan$Dir>.!Help")
@@ -141,11 +142,11 @@ CASE menu_up% OF
   ENDCASE
  WHEN logic_menu%
   search_logic%=!b%
-  $FNicon_indirection(search_window%,4)=FNget_standard_menu_text(logic_menu%,search_logic%)
+  $FNicon_indirection(search_window%,4)=FNmenu_get_text(logic_menu%,search_logic%)
   PROCicon_redraw(search_window%,4)
 ENDCASE
 :
-IF re_open% THEN PROCdisplay_menu(menu_up%,0,0)
+IF re_open% THEN PROCmenu_create(FNmenu_current_handle,0,0)
 ENDPROC
 :
 :
@@ -178,7 +179,7 @@ IF NOT FNwindow_is_open(search_window%) THEN
   $FNicon_indirection(search_window%,2)=last_search$(0)
   $FNicon_indirection(search_window%,5)=last_search$(1)
  ENDIF
- $FNicon_indirection(search_window%,4)=FNget_standard_menu_text(logic_menu%,search_logic%)
+ $FNicon_indirection(search_window%,4)=FNmenu_get_text(logic_menu%,search_logic%)
  PROCwindow_open_centred_at(search_window%,x%,y%)
  PROCicon_put_caret_at_end(search_window%,2)
 ENDIF
@@ -391,7 +392,7 @@ CASE b%!32 OF
   ENDCASE
  OTHERWISE
   SYS "Wimp_GetMenuState",1,q%,b%!32,b%!36
-  CASE menu_up% OF
+  CASE FNmenu_current_handle OF
    WHEN icon_bar_menu% : IF !q%>-1 THEN token$="MenuIB"+STR$(!q%)
                          IF !q%=1 AND q%!4>-1 THEN token$="MenuDB"+STR$(q%!4)
    WHEN logic_menu%    : IF !q%>-1 THEN token$="MenuLG"+STR$(!q%)
@@ -456,8 +457,9 @@ PROCtemplate_close
 $FNicon_indirection(program_info_window%,8)=CHR$(169) + " Stephen Fryatt, 2002-" + MID$(build_date$, 8)
 $FNicon_indirection(program_info_window%,3)=build_version$+" ("+build_date$+")"
 :
+PROCmenu_initialise
 !q%=program_info_window%
-PROCload_menu_block(resource_path$+"Menus",q%)
+PROCmenu_load_templates(resource_path$+"Menus",q%)
 icon_bar_menu%=!q%
 logic_menu%=q%!8
 :
