@@ -81,9 +81,9 @@ DEF PROChandle_mouse_click_event
 CASE b%!12 OF
  WHEN -2
   CASE b%!8 OF
-   WHEN 4 : PROCopen_search_window(PROCconfig_read_boolean("Select opens blank"),!b%,b%!4)
+   WHEN 4 : PROCopen_search_window(FNconfig_read_boolean("Select opens blank"),!b%,b%!4)
    WHEN 2 : PROCmenu_create_iconbar(icon_bar_menu%, !b%)
-   WHEN 1 : PROCopen_search_window(NOT PROCconfig_read_boolean("Select opens blank"),!b%,b%!4)
+   WHEN 1 : PROCopen_search_window(NOT FNconfig_read_boolean("Select opens blank"),!b%,b%!4)
   ENDCASE
  WHEN search_window%
   CASE b%!16 OF
@@ -256,7 +256,7 @@ DEF PROCwrite_escaped_string_to_file(file%,string$)
 :
 LOCAL loop%,char%,wildcards%
 :
-wildcards%=PROCconfig_read_boolean("Simple wildcards")
+wildcards%=FNconfig_read_boolean("Simple wildcards")
 :
 FOR loop%=1 TO LEN(string$)
  char%=ASC(MID$(string$,loop%,1))
@@ -294,7 +294,7 @@ DEF PROCcall_awkscan(file$)
 LOCAL command_string$,twindow_string$,options$
 :
 command_string$="awkscan "+file$
-twindow_string$="-wimpslot "+STR$(PROCconfig_read_integer("Task slot size"))+"k -name """+FNmessage_lookup("TaskWin")+""" -display -quit"
+twindow_string$="-wimpslot "+STR$(FNconfig_read_integer("Task slot size"))+"k -name """+FNmessage_lookup("TaskWin")+""" -display -quit"
 :
 SYS "Wimp_StartTask","TaskWindow """+command_string$+""" "+twindow_string$
 ENDPROC
@@ -316,9 +316,9 @@ REM Choices handling
 :
 :
 DEF PROCopen_options_window(x%,y%,open%)
-PROCicon_set_selected(options_window%,6,PROCconfig_read_boolean("Simple wildcards"))
-PROCicon_set_selected(options_window%,7,PROCconfig_read_boolean("Select opens blank"))
-$FNicon_indirection(options_window%,4)=STR$(PROCconfig_read_integer("Task slot size"))
+PROCicon_set_selected(options_window%,6,FNconfig_read_boolean("Simple wildcards"))
+PROCicon_set_selected(options_window%,7,FNconfig_read_boolean("Select opens blank"))
+$FNicon_indirection(options_window%,4)=STR$(FNconfig_read_integer("Task slot size"))
 :
 IF open% THEN
  PROCwindow_open_centred_at(options_window%,x%,y%)
@@ -378,7 +378,7 @@ REM Try and find an appropriate token for the window and icon currently under th
 token$=""
 :
 CASE b%!32 OF
- WHEN -2 : IF PROCconfig_read_boolean("Select opens blank") token$="HelpH1B" ELSE token$="HelpH1A"
+ WHEN -2 : IF FNconfig_read_boolean("Select opens blank") token$="HelpH1B" ELSE token$="HelpH1A"
  WHEN program_info_window% : token$="HelpH2"
  WHEN search_window% : CASE b%!36 OF
    WHEN 0,1,2,3,4 : token$="HelpSW"+STR$(b%!36)
