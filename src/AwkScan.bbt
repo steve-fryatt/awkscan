@@ -421,14 +421,22 @@ REM Initialisation
 :
 :
 DEF PROCinitialise
+LOCAL resources$
 DIM a% 256, b% 4095, q% 256
 :
-resource_path$=FNresources_find_territory_folder("<AwkScan$Dir>.Resources")
+REM Locate the application resources.
+:
+PROCresources_initialise_paths("<AwkScan$Dir>.Resources", "UK", "AwkScan$Language")
+:
+REM Load the messages file.
+:
+resources$ = FNresources_find_file("Messages", &FFF)
+IF resources$ = "" THEN ERROR 255, "Unable to find Messages file"
 :
 DIM message_block% 16
-SYS "MessageTrans_FileInfo",,resource_path$+"Messages" TO flags%,,message_size%
+SYS "MessageTrans_FileInfo",,resources$ TO flags%,,message_size%
 DIM message_buffer% message_size%
-SYS "MessageTrans_OpenFile",message_block%,resource_path$+"Messages",message_buffer%
+SYS "MessageTrans_OpenFile",message_block%,resources$,message_buffer%
 :
 task_name$=FNmessage_lookup("TaskName")
 task_spr$=FNmessage_lookup("TaskSpr")
@@ -442,10 +450,13 @@ SYS "Wimp_Initialise",310,!b%,task_name$,q%
 :
 quit%=FALSE
 :
+resources$ = FNresources_find_file("Templates", &FEC)
+IF resources$ = "" THEN ERROR 255, "Unable to find Templates file"
+:
 indirected_data_size%=1024
 DIM indirected_data% indirected_data_size%
 :
-PROCtemplate_open(resource_path$+"Templates")
+PROCtemplate_open(resources$)
 PROCtemplate_load("Info",b%,indirected_data%,indirected_data_size%,-1)
 SYS "Wimp_CreateWindow",,b% TO program_info_window%
 PROCtemplate_load("Search",b%,indirected_data%,indirected_data_size%,-1)
@@ -457,9 +468,12 @@ PROCtemplate_close
 $FNicon_indirection(program_info_window%,8)=CHR$(169) + " Stephen Fryatt, 2002-" + MID$(build_date$, 8)
 $FNicon_indirection(program_info_window%,3)=build_version$+" ("+build_date$+")"
 :
+resources$ = FNresources_find_file("Menus", &FFD)
+IF resources$ = "" THEN ERROR 255, "Unable to find Menus file"
+:
 PROCmenu_initialise
 !q%=program_info_window%
-PROCmenu_load_templates(resource_path$+"Menus",q%)
+PROCmenu_load_templates(resources$,q%)
 icon_bar_menu%=!q%
 logic_menu%=q%!8
 :
