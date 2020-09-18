@@ -8,25 +8,25 @@ AwkScan
 #SpriteFile Sprites
 #Sprite 8,0 Logo
 #Align Right
-{f*/:A search tool for Archive Magazine†}
-Version $$version$$†($$date$$) 
+{f*/:A search tool for Archive MagazineÔøΩ}
+Version $$version$$ÔøΩ($$date$$) 
 #Below
 #Line
 #Align Centre
-{f/:AwkScan} is {f*:Freeware}: please read the <License>
+{f/:AwkScan} is {f*:Open Source}: please read the <License>
 
 #Indent 2
 #Table Columns 4
-è <Introduction>
-è <Installation>
-è <Installing CallASWI=>CallASWI>
-è <Using AwkScan=>Using>
-è <Search Files=>Files>
-è <Regular Expressions=>RegExps>
-è <Choices>
-è <The Database=>Database>
+ÔøΩ <Introduction>
+ÔøΩ <Installation>
+ÔøΩ <Installing CallASWI=>CallASWI>
+ÔøΩ <Using AwkScan=>Using>
+ÔøΩ <Search Files=>Files>
+ÔøΩ <Regular Expressions=>RegExps>
+ÔøΩ <Choices>
+ÔøΩ <The Database=>Database>
 
-è <Version History=>History>
+ÔøΩ <Version History=>History>
  
 
 #Endtable
@@ -36,8 +36,8 @@ Version $$version$$†($$date$$)
 If you have any comments about {f/:AwkScan}, or would like to report any bugs that you find, you can email the authors at the addresses below.
 
 #Align Centre
-AwkScan © Gavin Wraith, 2002 (<gavin@wraith.u-net.com=>#url mailto:gavin@wraith.u-net.com>)
-Front-end © Stephen Fryatt, 2002 (<steve@stevefryatt.org.uk=>#url mailto:steve@stevefryatt.org.uk>)
+AwkScan ÔøΩ Gavin Wraith, 2002 (<gavin@wraith.u-net.com=>#url mailto:gavin@wraith.u-net.com>)
+Front-end ÔøΩ Stephen Fryatt, 2002 (<steve@stevefryatt.org.uk=>#url mailto:steve@stevefryatt.org.uk>)
 
 A plain text version of this manual is available <here=>*Filer_Run <AwkScan$HelpText\>>.
 #Align Left
@@ -74,6 +74,24 @@ Author G.C.Wraith, Front-end S.Fryatt$$date$$
 <chapter title="Introduction" file="Introduction">
 
 <cite>AwkScan</cite> is an application to search the <cite>Archive</cite> ArcScan magazine and disc index files.
+
+</chapter>
+
+
+
+<chapter title="License" file="License">
+
+<cite>AwkScan</cite> is licensed under the EUPL, Version&nbsp;1.2 only (the &ldquo;Licence&rdquo;); you may not use this work except in compliance with the Licence.
+
+You may obtain a copy of the Licence at <link ref="#url http://joinup.ec.europa.eu/software/page/eupl">http://joinup.ec.europa.eu/software/page/eupl</link>
+
+Unless required by applicable law or agreed to in writing, software distributed under the Licence is distributed on an &ldquo;<strong>as is</strong>&rdquo; basis, <strong>without warranties or conditions of any kind</strong>, either express or implied.
+
+See the Licence for the specific language governing permissions and limitations under the Licence.
+
+The source for <cite>AwkScan</cite> can be found alongside this binary download, at <link ref="#url http://www.stevefryatt.org.uk/software">http://www.stevefryatt.org.uk/software</link>
+
+The necessary libraries and build tools can be found at <link ref="#url http://www.stevefryatt.org.uk/software/build">http://www.stevefryatt.org.uk/software/build</link>
 
 </chapter>
 
