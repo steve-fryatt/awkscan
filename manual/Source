@@ -8,8 +8,8 @@ AwkScan
 #SpriteFile Sprites
 #Sprite 8,0 Logo
 #Align Right
-{f*/:A search tool for Archive Magazineï¿½}
-Version $$version$$ï¿½($$date$$) 
+{f*/:A search tool for Archive Magazine }
+Version $$version$$ ($$date$$)
 #Below
 #Line
 #Align Centre
@@ -17,17 +17,17 @@ Version $$version$$ï¿½($$date$$)
 
 #Indent 2
 #Table Columns 4
-ï¿½ <Introduction>
-ï¿½ <Installation>
-ï¿½ <Installing CallASWI=>CallASWI>
-ï¿½ <Using AwkScan=>Using>
-ï¿½ <Search Files=>Files>
-ï¿½ <Regular Expressions=>RegExps>
-ï¿½ <Choices>
-ï¿½ <The Database=>Database>
+ <Introduction>
+ <Installation>
+ <Installing CallASWI=>CallASWI>
+ <Using AwkScan=>Using>
+ <Search Files=>Files>
+ <Regular Expressions=>RegExps>
+ <Choices>
+ <The Database=>Database>
 
-ï¿½ <Version History=>History>
- 
+ <Version History=>History>
+
 
 #Endtable
 #Indent
@@ -36,8 +36,8 @@ Version $$version$$ï¿½($$date$$)
 If you have any comments about {f/:AwkScan}, or would like to report any bugs that you find, you can email the authors at the addresses below.
 
 #Align Centre
-AwkScan ï¿½ Gavin Wraith, 2002 (<gavin@wraith.u-net.com=>#url mailto:gavin@wraith.u-net.com>)
-Front-end ï¿½ Stephen Fryatt, 2002 (<steve@stevefryatt.org.uk=>#url mailto:steve@stevefryatt.org.uk>)
+AwkScan © Gavin Wraith, 2002 (<gavin@wraith.u-net.com=>#url mailto:gavin@wraith.u-net.com>)
+Front-end © Stephen Fryatt, 2002 (<steve@stevefryatt.org.uk=>#url mailto:steve@stevefryatt.org.uk>)
 
 A plain text version of this manual is available <here=>*Filer_Run <AwkScan$HelpText\>>.
 #Align Left
