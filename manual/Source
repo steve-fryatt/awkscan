@@ -37,7 +37,7 @@ If you have any comments about {f/:AwkScan}, or would like to report any bugs th
 
 #Align Centre
 AwkScan © Gavin Wraith, 2002 (<gavin@wraith.u-net.com=>#url mailto:gavin@wraith.u-net.com>)
-Front-end © Stephen Fryatt, 2002 (<steve@stevefryatt.org.uk=>#url mailto:steve@stevefryatt.org.uk>)
+Front-end © Stephen Fryatt, 2002 (<info@stevefryatt.org.uk=>#url mailto:info@stevefryatt.org.uk>)
 
 A plain text version of this manual is available <here=>*Filer_Run <AwkScan$HelpText\>>.
 #Align Left
@@ -358,7 +358,7 @@ Contacts
 --------
 
   Please report bugs to gavin@wraith.u-net.com (for bugs in the search
-  routines) or steve@stevefryatt.org.uk (for bugs in the desktop
+  routines) or info@stevefryatt.org.uk (for bugs in the desktop
   front-end).
 </literal>
 
